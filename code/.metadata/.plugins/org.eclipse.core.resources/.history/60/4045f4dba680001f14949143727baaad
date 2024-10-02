@@ -1,0 +1,52 @@
+package calculator;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Calculator {
+	// Interface to define a generic operation
+    interface OperationStrategy {
+        double calculate(double num1, double num2);
+    }
+
+    // Map to hold different operations
+    private final Map<Operations, OperationStrategy> operationsMap = new HashMap<>();
+
+    // Constructor to initialize basic operations
+    public Calculator() {
+        operationsMap.put(Operations.ADD, (num1, num2) -> num1 + num2);
+        operationsMap.put(Operations.SUBSTRACT, (num1, num2) -> num1 - num2);
+        operationsMap.put(Operations.MULTIPLY, (num1, num2) -> num1 * num2);
+        operationsMap.put(Operations.DIVIDE, (num1, num2) -> {
+            if (num2 == 0) {
+                throw new ArithmeticException("Cannot divide by zero");
+            }
+            return num1 / num2;
+        });
+    }
+
+    // Basic calculation method
+    public double calculate(Operations op, double num1, double num2) {
+        OperationStrategy operation = operationsMap.get(op);
+        if (operation == null) {
+            throw new UnsupportedOperationException("Operation not supported");
+        }
+        return operation.calculate(num1, num2);
+    }
+
+    // Extensibility: Method to add new operations
+    public void addOperation(Operations op, OperationStrategy strategy) {
+        operationsMap.put(op, strategy);
+    }
+    
+ // Chained calculation method
+    public double chainOperations(double initialValue, Object[][] operations) {
+        double result = initialValue;
+        for (Object[] operation : operations) {
+            Operations op = (Operations) operation[0];
+            double value = (double) operation[1];
+            result = calculate(op, result, value);
+        }
+        return result;
+    }
+}

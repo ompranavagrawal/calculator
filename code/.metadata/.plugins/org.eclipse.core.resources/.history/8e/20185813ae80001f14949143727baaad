@@ -1,0 +1,60 @@
+package calculator;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class CalculatorTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    public void setup() {
+        // Create a calculator instance before each test
+        calculator = new Calculator();
+
+        // Adding the Power operation for testing
+        calculator.addOperation(Operations.POWER, (num1, num2) -> Math.pow(num1, num2));
+    }
+
+    @Test
+    public void testAddition() {
+        double result = calculator.calculate(Operations.ADD, 5.0, 3.0);
+        Assertions.assertEquals(8.0, result);
+    }
+
+    @Test
+    public void testSubtraction() {
+        double result = calculator.calculate(Operations.SUBSTRACT, 10.0, 4.0);
+        Assertions.assertEquals(6.0, result);
+    }
+
+    @Test
+    public void testMultiplication() {
+        double result = calculator.calculate(Operations.MULTIPLY, 7.0, 2.0);
+        Assertions.assertEquals(14.0, result);
+    }
+
+    @Test
+    public void testDivision() {
+        double result = calculator.calculate(Operations.DIVIDE, 8.0, 2.0);
+        Assertions.assertEquals(4.0, result);
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        Assertions.assertThrows(ArithmeticException.class, () -> calculator.calculate(Operations.DIVIDE, 6.0, 0.0));
+    }
+
+    // New test for the Power operation
+    @Test
+    public void testPowerOperation() {
+        double result = calculator.calculate(Operations.POWER, 2.0, 3.0);
+        Assertions.assertEquals(8.0, result); // 2^3 = 8
+    }
+
+    @Test
+    public void testUnsupportedOperation() {
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> calculator.calculate(null, 2.0, 3.0));
+    }
+}

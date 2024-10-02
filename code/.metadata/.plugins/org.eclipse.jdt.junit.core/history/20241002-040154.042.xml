@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CalculatorTest" project="calculator" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="calculator.CalculatorTest" time="0.037" displayname="CalculatorTest" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]">
+    <testcase name="testUnsupportedOperation" classname="calculator.CalculatorTest" time="0.022" displayname="testUnsupportedOperation()" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]/[method:testUnsupportedOperation()]"/>
+    <testcase name="testAddition" classname="calculator.CalculatorTest" time="0.004" displayname="testAddition()" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]/[method:testAddition()]"/>
+    <testcase name="testChainedOperations" classname="calculator.CalculatorTest" time="0.001" displayname="testChainedOperations()" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]/[method:testChainedOperations()]"/>
+    <testcase name="testDivisionByZero" classname="calculator.CalculatorTest" time="0.002" displayname="testDivisionByZero()" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]/[method:testDivisionByZero()]"/>
+    <testcase name="testDivision" classname="calculator.CalculatorTest" time="0.001" displayname="testDivision()" uniqueid="[engine:junit-jupiter]/[class:calculator.CalculatorTest]/[method:testDivision()]"/>
+  </testsuite>
+</testrun>

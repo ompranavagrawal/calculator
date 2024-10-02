@@ -1,0 +1,5 @@
+module-info.class
+calculator/Calculator.class
+calculator/Operations.class
+calculator/Calculator$OperationStrategy.class
+calculator/Main.class

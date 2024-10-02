@@ -1,0 +1,43 @@
+package calculator;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a calculator instance with default operations
+        Calculator calculator = new Calculator();
+
+        // Perform individual operations
+        double addResult = calculator.calculate(Operations.ADD, 5.0, 3.0);
+        System.out.println("5 + 3 = " + addResult);
+
+        double subtractResult = calculator.calculate(Operations.SUBSTRACT, 10.0, 4.0);
+        System.out.println("10 - 4 = " + subtractResult);
+
+        double multiplyResult = calculator.calculate(Operations.MULTIPLY, 7.0, 2.0);
+        System.out.println("7 * 2 = " + multiplyResult);
+
+        double divideResult = calculator.calculate(Operations.DIVIDE, 8.0, 2.0);
+        System.out.println("8 / 2 = " + divideResult);
+
+        // Perform chained operations
+        Object[][] operations = {
+            {Operations.ADD, 3.0},
+            {Operations.MULTIPLY, 2.0},
+            {Operations.SUBSTRACT, 5.0}
+        };
+        double chainedResult = calculator.chainOperations(10.0, operations);
+        System.out.println("Chained result = " + chainedResult);
+        
+        
+        // Adding the Power operation dynamically
+        calculator.addOperation("POWER", (num1, num2) -> Math.pow(num1, num2));
+
+        // Perform the Power operation
+        double powerResult = calculator.calculate("POWER", 2.0, 3.0);
+        System.out.println("2 ^ 3 = " + powerResult);  // Output: 2 ^ 3 = 8.0
+
+        // Perform regular operations
+        double newAddResult = calculator.calculate(Operations.ADD, 5.0, 3.0);
+        System.out.println("5 + 3 = " + newAddResult);
+    }
+}
+
